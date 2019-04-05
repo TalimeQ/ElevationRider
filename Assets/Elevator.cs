@@ -6,6 +6,7 @@ namespace polyslash.Winda
 {
     public class Elevator : MonoBehaviour
     {
+        Animator elevatorAnimator;
         private Vector3 startPoint;
         // [SerializeField]
         private Vector3 endPoint;
@@ -23,6 +24,7 @@ namespace polyslash.Winda
         // Start is called before the first frame update
         void Start()
         {
+            elevatorAnimator = GetComponent<Animator>();
             startPoint = transform.position;
             endPoint = new Vector3(transform.position.x, transform.position.y + averageTravelDistance, transform.position.z);
             journeyLenght = Vector3.Distance(startPoint, endPoint);
@@ -36,7 +38,10 @@ namespace polyslash.Winda
 
             float fracJourney = distCovered / journeyLenght;
             transform.position = Vector3.Lerp(startPoint, endPoint, fracJourney);
+            if (fracJourney >= 1.0f) isIdle = true;
         }
+
+
         public void StartElevator(int floorLevel)
         {
             print("Started elevator!!");
@@ -73,6 +78,13 @@ namespace polyslash.Winda
 
 
 
+        }
+
+        public void OpenDoor(int floorLevel)
+        {
+            int currentFloorLevel = (int)(transform.position.y / averageTravelDistance);
+            if (floorLevel == currentFloorLevel)
+            elevatorAnimator.Play("WindaDrzwi");
         }
     }
 }

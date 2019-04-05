@@ -477,26 +477,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
---- !u!1 &1648645343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8221442390438349661, guid: 07295d1f6f700d44ab38b2ef10336519,
-    type: 3}
-  m_PrefabInstance: {fileID: 8221442392011497346}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1648645345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648645343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d173bb4cf20f7942aaa8ed3ac719b82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  averageTravelDistance: 5.5
 --- !u!1001 &2022923319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -711,7 +691,7 @@ PrefabInstance:
         type: 3}
       propertyPath: calledElevator
       value: 
-      objectReference: {fileID: 1648645345}
+      objectReference: {fileID: 8221442392011497347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
 --- !u!1001 &8221442392011497346
@@ -783,3 +763,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07295d1f6f700d44ab38b2ef10336519, type: 3}
+--- !u!114 &8221442392011497347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6029343841741104805, guid: 07295d1f6f700d44ab38b2ef10336519,
+    type: 3}
+  m_PrefabInstance: {fileID: 8221442392011497346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d173bb4cf20f7942aaa8ed3ac719b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
