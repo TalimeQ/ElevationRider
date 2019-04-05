@@ -11,6 +11,12 @@ namespace polyslash.Winda
         // [SerializeField]
         private Vector3 endPoint;
 
+        // Chyba nie potrafie w traceing, na poczatku trace normalnie zwracal przyciski na konsoli i winda jechala, potem zaczal zwracac caly prefab windy :/
+        [SerializeField]
+        GameObject konsola;
+        [SerializeField]
+        Transform miejsceNaKonsole;
+
         float elevatorStartTime = 0.0f;
         [SerializeField]
         float speed = 2;
@@ -24,7 +30,16 @@ namespace polyslash.Winda
         // Start is called before the first frame update
         void Start()
         {
+            konsola = Instantiate(konsola);
+            var Buttony = konsola.GetComponentsInChildren<CallButton>();
+            foreach(CallButton button in Buttony)
+            {
+                print(button);
+                button.CalledElevator = this;
+            }
             elevatorAnimator = GetComponent<Animator>();
+            
+
             startPoint = transform.position;
             endPoint = new Vector3(transform.position.x, transform.position.y + averageTravelDistance, transform.position.z);
             journeyLenght = Vector3.Distance(startPoint, endPoint);
@@ -35,7 +50,7 @@ namespace polyslash.Winda
         void Update()
         {
             float distCovered = (Time.time - elevatorStartTime) * speed;
-
+            konsola.transform.position = miejsceNaKonsole.position;
             float fracJourney = distCovered / journeyLenght;
             transform.position = Vector3.Lerp(startPoint, endPoint, fracJourney);
             if (fracJourney >= 1.0f) isIdle = true;

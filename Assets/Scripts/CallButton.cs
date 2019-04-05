@@ -8,6 +8,8 @@ namespace polyslash.Winda
     {
         [SerializeField]
         Elevator calledElevator;
+        public Elevator CalledElevator { get { return calledElevator; } set { calledElevator = value; } }
+
         [SerializeField]
         int LevelNumber = 0;
 

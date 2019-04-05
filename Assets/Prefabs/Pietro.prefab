@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5329991497472912475}
   - component: {fileID: 5329991497472912474}
   - component: {fileID: 5329991497472912473}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: ScianaEast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5329991497649451232}
   - component: {fileID: 5329991497649451239}
   - component: {fileID: 5329991497649451238}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: ScianaSouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 5329991497727397656}
   - component: {fileID: 5329991497727397663}
   - component: {fileID: 5329991497727397662}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Podloga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5329991497988012097}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Pietro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 5329991498946849407}
   - component: {fileID: 5329991498946849406}
   - component: {fileID: 5329991498946849405}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: ScianaNorth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 5329991499175002645}
   - component: {fileID: 5329991499175002644}
   - component: {fileID: 5329991499175002859}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: ScianaWest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 4707745021004995328}
   - component: {fileID: 2604829551591391352}
   - component: {fileID: 8114503854916207243}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WindaScianaBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1397533852678280988}
   - component: {fileID: 7709816119200220363}
   - component: {fileID: 5121079724468426025}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WindaScianaSouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 6701238150479782962}
   - component: {fileID: 2108415455113917399}
   - component: {fileID: 2412051762405175653}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WindaScianaEast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,6 +780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiejsceNaWinde
       objectReference: {fileID: 0}
+    - target: {fileID: 8371066718380747024, guid: 0cc7cefc75a741f4e9057fc48bc69676,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1826421526587570931, guid: 0cc7cefc75a741f4e9057fc48bc69676,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -835,6 +840,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 783172561025920617, guid: 0cc7cefc75a741f4e9057fc48bc69676,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355019724975195305, guid: 0cc7cefc75a741f4e9057fc48bc69676,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260445294739337785, guid: 0cc7cefc75a741f4e9057fc48bc69676,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cc7cefc75a741f4e9057fc48bc69676, type: 3}
 --- !u!4 &1223975891888805015 stripped
@@ -854,6 +874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Przycisk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258496630279754710, guid: 3f7b6b75a679cb34db520115b7b2282a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1258496630279754709, guid: 3f7b6b75a679cb34db520115b7b2282a,
         type: 3}
@@ -908,6 +933,16 @@ PrefabInstance:
     - target: {fileID: 1258496630279754709, guid: 3f7b6b75a679cb34db520115b7b2282a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258496630399524770, guid: 3f7b6b75a679cb34db520115b7b2282a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258496630190925052, guid: 3f7b6b75a679cb34db520115b7b2282a,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

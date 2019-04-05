@@ -25,8 +25,9 @@ namespace polyslash.Player
             RaycastHit hitInformation;
             Vector3 endPos = traceStart.transform.forward * traceRange;
             Debug.DrawRay(traceStart.transform.position, endPos, Color.blue, 10.0f);
-            if(Physics.Raycast(traceStart.transform.position, traceStart.transform.forward, out hitInformation, traceRange))
+            if(Physics.Raycast(traceStart.transform.position, traceStart.transform.forward, out hitInformation, traceRange,15,QueryTriggerInteraction.Ignore))
             {
+                Debug.DrawLine(hitInformation.transform.position, hitInformation.transform.position,Color.black,1.0f);
                 Debug.Log(hitInformation.transform.name);
                 CallButton callbutton = hitInformation.transform.gameObject.GetComponent<CallButton>();
                 if(callbutton)
