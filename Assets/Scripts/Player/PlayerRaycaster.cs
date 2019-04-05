@@ -25,6 +25,12 @@ namespace polyslash.Player
             if(Physics.Raycast(traceStart.transform.position, traceStart.transform.forward, out hitInformation, traceRange))
             {
                 Debug.Log(hitInformation.transform.name);
+                CallButton callbutton = hitInformation.transform.gameObject.GetComponent<CallButton>();
+                if(callbutton)
+                {
+                    callbutton.CallElevator();
+                }
+
             }
         }
     }
