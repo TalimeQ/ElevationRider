@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279252821815165373, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17,
+        type: 3}
+      propertyPath: LevelNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
 --- !u!1 &170076733
@@ -317,6 +322,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279252821815165373, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17,
+        type: 3}
+      propertyPath: LevelNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
 --- !u!1001 &1195441942
@@ -385,6 +395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279252821815165373, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17,
+        type: 3}
+      propertyPath: LevelNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
@@ -455,6 +470,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279252821815165373, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17,
+        type: 3}
+      propertyPath: LevelNumber
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}
 --- !u!1 &1648645343 stripped
@@ -475,8 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d173bb4cf20f7942aaa8ed3ac719b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endPoint: {x: -12.6, y: 5, z: 4.88}
-  journeyTime: 0.01
+  speed: 2
   averageTravelDistance: 5.5
 --- !u!1001 &2022923319
 PrefabInstance:
@@ -544,6 +563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279252821815165373, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17,
+        type: 3}
+      propertyPath: LevelNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0eaf1342ce9cdc4fbd4d5ed1e820c17, type: 3}

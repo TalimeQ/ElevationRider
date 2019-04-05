@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using polyslash.Winda;
 
 namespace polyslash.Player
 {
@@ -22,6 +23,8 @@ namespace polyslash.Player
         public void Raycast()
         {
             RaycastHit hitInformation;
+            Vector3 endPos = traceStart.transform.forward * traceRange;
+            Debug.DrawRay(traceStart.transform.position, endPos, Color.blue, 10.0f);
             if(Physics.Raycast(traceStart.transform.position, traceStart.transform.forward, out hitInformation, traceRange))
             {
                 Debug.Log(hitInformation.transform.name);

@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CallButton : MonoBehaviour
+namespace polyslash.Winda
 {
-    [SerializeField]
-    Elevator calledElevator;
-    // Start is called before the first frame update
-    void Start()
+    public class CallButton : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        Elevator calledElevator;
+        [SerializeField]
+        int LevelNumber = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
-    public void CallElevator()
-    {
-        calledElevator.StartElevator(0);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+        public void CallElevator()
+        {
+            calledElevator.StartElevator(LevelNumber);
+        }
     }
 }
