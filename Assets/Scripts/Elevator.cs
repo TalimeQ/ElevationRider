@@ -79,7 +79,6 @@ namespace polyslash.Winda
             konsola.transform.position = miejsceNaKonsole.position;
             float fracJourney = distCovered / journeyLenght;
             transform.position = Vector3.Lerp(startPoint, endPoint, fracJourney);
-            //carriedPlayer.transform.position = Vector3.Lerp(startPoint, endPoint, fracJourney);
             if (fracJourney >= 1.0f) SwitchState(ElevatorState.E_Opening);
         }
 
