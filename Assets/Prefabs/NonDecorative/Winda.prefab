@@ -361,6 +361,8 @@ MonoBehaviour:
   konsola: {fileID: 2528574055286818273, guid: 78777114263a0754fb230d01a2b75948, type: 3}
   miejsceNaKonsole: {fileID: 1290870154442833514}
   noGravZone: {fileID: 0}
+  arrivedClip: {fileID: 8300000, guid: 19b8ddae6602bf547b4b9a08ea2c21c3, type: 3}
+  loopingTheme: {fileID: 8300000, guid: 8e3c90d19dc0bf74ebbe85c68b7f6e18, type: 3}
   speed: 2
   stateTime: 5
   averageTravelDistance: 5.5

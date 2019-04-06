@@ -13,37 +13,43 @@ namespace polyslash.Winda
         E_Opening,
         E_Closing,
         E_Moving,
-        E_DoorsInterrupted
     }
 
     public class Elevator : MonoBehaviour
     {
 
-        ElevatorState currentElevState = ElevatorState.E_Idle;
-        Animator elevatorAnimator;
-        private Vector3 startPoint;
-        // [SerializeField]
-        private Vector3 endPoint;
 
-        // Chyba nie potrafie w traceing, na poczatku trace normalnie zwracal przyciski na konsoli i winda jechala, potem zaczal zwracac caly prefab windy :/
+
+        /* Chyba nie potrafie w traceing, na poczatku trace normalnie zwracal przyciski na konsoli i winda jechala, potem zaczal zwracac caly prefab windy :/
+         Efektem jest ten bandaidowe rozwiązanie.
+             */
         [SerializeField]
         GameObject konsola;
         [SerializeField]
         Transform miejsceNaKonsole;
-        //Maybe will be used later
+        //Maybe be used later
         [SerializeField]
         BoxCollider noGravZone;
         [SerializeField]
+        AudioClip arrivedClip;
+        [SerializeField]
+        AudioClip loopingTheme;
+        [SerializeField]
         float speed = 2;
         [SerializeField]
-        float stateTime = 5.0f;
+        float openedTime = 5.0f;
         [SerializeField]
         float averageTravelDistance = 5.5f;
 
         GameObject carriedPlayer;
         float elevatorStartTime = 0.0f;
         float journeyLenght;
-        bool isIdle = true;
+        ElevatorState currentElevState = ElevatorState.E_Idle;
+        Animator elevatorAnimator;
+        private Vector3 startPoint;
+        // [SerializeField]
+        private Vector3 endPoint;
+        AudioSource elevatorAudioSource;
 
         // Start is called before the first frame update
         void Start()
@@ -51,7 +57,7 @@ namespace polyslash.Winda
             
             ConsoleInit();
             elevatorAnimator = GetComponent<Animator>();
-   
+            elevatorAudioSource = GetComponent<AudioSource>();
 
         }
 
@@ -79,7 +85,11 @@ namespace polyslash.Winda
             konsola.transform.position = miejsceNaKonsole.position;
             float fracJourney = distCovered / journeyLenght;
             transform.position = Vector3.Lerp(startPoint, endPoint, fracJourney);
-            if (fracJourney >= 1.0f) SwitchState(ElevatorState.E_Opening);
+            if (fracJourney >= 1.0f)
+            {
+                PlaySound(arrivedClip, false);
+                SwitchState(ElevatorState.E_Opening);
+            }
         }
 
         private void ProcessCurrentState()
@@ -91,39 +101,45 @@ namespace polyslash.Winda
                     MoveElevator();
                     break;
                 case ElevatorState.E_Opening:
-                    if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).IsName("WindaDrzwi"))
-                    {
-                        elevatorAnimator.SetBool("isOpening", false);
-                        StartCoroutine(timedStateSwitcher(ElevatorState.E_Closing));
-                    }
+                    ProcessOpeningLogic();
                     break;
                 case ElevatorState.E_Closing:
-                     if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-                    {
-                        elevatorAnimator.SetFloat("closeValue", 0.1f);
-                    }
-                    else if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).length <= elevatorAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime )
-                    {
-
-                        elevatorAnimator.SetFloat("closeValue", 0.0f);
-                        SwitchState(ElevatorState.E_Idle);
-                    }
-                   
+                    ProcessClosingLogic();
                     break;
-                        
                 default:
-              
                     break;
             }
-            print("Unrecognized state" + currentElevState);
         }
+
+        private void ProcessClosingLogic()
+        {
+            if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+            {
+                elevatorAnimator.SetFloat("closeValue", 0.1f);
+            }
+            else if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).length <= elevatorAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime)
+            {
+
+                elevatorAnimator.SetFloat("closeValue", 0.0f);
+                SwitchState(ElevatorState.E_Idle);
+            }
+        }
+
+        private void ProcessOpeningLogic()
+        {
+            if (this.elevatorAnimator.GetCurrentAnimatorStateInfo(0).IsName("WindaDrzwi"))
+            {
+                elevatorAnimator.SetBool("isOpening", false);
+                StartCoroutine(timedStateSwitcher(ElevatorState.E_Closing,openedTime));
+            }
+        }
+       
 
         public void StartElevator(int floorLevel)
         {
             // It should have queue or smth to process multiple inputs like normal elevs do, but well thats close enough 
-            if (currentElevState == ElevatorState.E_Moving)
+            if (currentElevState != ElevatorState.E_Idle)
             {
-                print("Elevator is already moving" + currentElevState);
                 return;
             }
 
@@ -140,7 +156,7 @@ namespace polyslash.Winda
                 startPoint = transform.position;
                 endPoint = new Vector3(transform.position.x, transform.position.y + averageTravelDistance * Mathf.Abs(floorLevel - currentFloorLevel), transform.position.z);
                 journeyLenght = Vector3.Distance(startPoint, endPoint);
-                elevatorStartTime = Time.time;
+             
             }
             else if (floorLevel < currentFloorLevel)
             {
@@ -148,15 +164,15 @@ namespace polyslash.Winda
                 startPoint = transform.position;
                 endPoint = new Vector3(transform.position.x, transform.position.y - averageTravelDistance * Mathf.Abs(floorLevel - currentFloorLevel), transform.position.z);
                 journeyLenght = Vector3.Distance(startPoint, endPoint);
-                elevatorStartTime = Time.time;
+               
             }
             print("Ride Parameters: startpoint:" + startPoint + " endpoint:" + endPoint + elevatorStartTime);
-            SwitchState(ElevatorState.E_Moving);
-            
-            
+       
+            PlaySound(arrivedClip, false);
+            StartCoroutine(timedStateSwitcher(ElevatorState.E_Moving, 1.0f));
         }
 
-        IEnumerator timedStateSwitcher(ElevatorState newElevatorState)
+        IEnumerator timedStateSwitcher(ElevatorState newElevatorState, float stateTime)
         {
             yield return new WaitForSeconds(stateTime);
             SwitchState(newElevatorState);
@@ -168,11 +184,15 @@ namespace polyslash.Winda
             switch(currentElevState)
             {
                 case ElevatorState.E_Opening:
+                    
                     elevatorAnimator.SetBool("isOpening", true);
                     break;
                 case ElevatorState.E_Closing:
                     elevatorAnimator.SetFloat("closeValue", 0.1f);
-
+                    break;
+                case ElevatorState.E_Moving:
+                    elevatorStartTime = Time.time;
+                    PlaySound(loopingTheme, true);
                     break;
                 default:
                     break;
@@ -192,6 +212,20 @@ namespace polyslash.Winda
            
         }
 
+        private void PlaySound(AudioClip audio, bool looping)
+        {
+            if (elevatorAudioSource.isPlaying) elevatorAudioSource.Stop();
+            if(looping)
+            {
+                elevatorAudioSource.clip = audio;
+                elevatorAudioSource.Play();
+            }
+            else
+            {
+                elevatorAudioSource.PlayOneShot(audio);
+            }
+           
+        }
         
     }
 }
